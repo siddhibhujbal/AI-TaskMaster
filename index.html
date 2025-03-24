@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Task Manager</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Smart Task Manager</h1>
+    <p class="app-description">Organize your tasks with AI assistance</p>
+    
+    <div class="tabs">
+      <button class="tab active" data-tab="manual">Manual Tasks</button>
+      <button class="tab" data-tab="ai">AI Generated Tasks</button>
+    </div>
+    
+    <!-- Manual Tasks Tab -->
+    <div class="tab-content active" id="manual-tab">
+      <div class="input-group">
+        <input type="text" id="manual-input" placeholder="Add a new task...">
+        <button class="btn-add" onclick="addManualTask()">Add Task</button>
+      </div>
+      
+      <div class="task-list-container">
+        <h2>Your Tasks</h2>
+        <div id="manual-tasks" class="task-list"></div>
+      </div>
+    </div>
+    
+    <!-- AI Generated Tasks Tab -->
+    <div class="tab-content" id="ai-tab">
+      <textarea id="ai-prompt" class="ai-prompt" placeholder="Describe what you want to accomplish... (e.g., 'I want to learn JavaScript')"></textarea>
+      <button class="btn-generate" onclick="getTasksFromGroq()">Generate Tasks</button>
+      
+      <div class="task-list-container">
+        <h2>AI Generated Tasks</h2>
+        <div id="ai-tasks" class="task-list"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Template (Hidden) -->
+  <template id="task-template">
+    <div class="task-item">
+      <div class="task-header">
+        <input type="checkbox" class="task-checkbox">
+        <span class="task-text"></span>
+        <div class="task-actions">
+          <button class="btn-edit">Edit</button>
+          <button class="btn-add-subtask">+ Subtask</button>
+          <button class="btn-delete">Delete</button>
+        </div>
+      </div>
+      <div class="subtasks"></div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
